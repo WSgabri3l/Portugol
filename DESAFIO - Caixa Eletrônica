@@ -1,1 +1,14 @@
+	funcao processa_saque(inteiro valor_saque)
+	{
+		// alterações devem ser feitas aqui
+		notas_50 = valor_saque / 50 // siga esta ideia para programar as duas linhas abaixo
 
+    //Essas foram as partes que eu alterei, elas eram assim:
+    //notas_20 = 0
+    //notas_10 = 0
+    //E se tornaram isso:
+		
+		notas_20 = (valor_saque % 50) / 20
+		
+		notas_10 = (valor_saque % 50) % 20 / 10
+	}
