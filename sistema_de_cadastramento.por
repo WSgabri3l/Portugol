@@ -1,20 +1,27 @@
-programa {
+ programa {
+
+    inclua biblioteca Util --> u
+
   funcao inicio() {
 
-    inteiro opcao, limite_usuarios
+    inteiro opcao, limite_usuarios, quantidade_usuarios = 0, quantidade_idades = 0, copia_limite_usuarios
     logico loop_ativado = verdadeiro
     cadeia nome, lista_nomes [100]
+    inteiro idade, lista_idade [100]
 
-    escreva ("Quantos usu·rios ser„o cadastrados no site? ")
+    escreva ("Quantos usu√°rios ser√£o cadastrados no site? ")
     leia (limite_usuarios)
     lista_nomes[limite_usuarios]
 
+    copia_limite_usuarios = limite_usuarios
+
     enquanto (loop_ativado){
 
-      escreva("\nDigite o n˙mero para: ")
-      escreva("\n1- Cadastrar novo usu·rio.")
-      escreva("\n2- Listar os usu·rios cadastrados.")
+      escreva("\nDigite o n√∫mero para: ")
+      escreva("\n1- Cadastrar novo usu√°rio.")
+      escreva("\n2- Listar os usu√°rios cadastrados.")
       escreva("\n3- Sair.")
+      escreva("\n\n")
 
       leia (opcao)
 
@@ -22,30 +29,69 @@ programa {
 
         caso 1:
 
-        escreva("\nDigite o nome do usu·rio a ser cadastrado")
-        leia (nome)
+        escreva ("\nEspa√ßos dispon√≠veis: ", copia_limite_usuarios, ".\n")
 
-        para (inteiro contador_1 = 0; contador_1 < limite_usuarios; contador_1 ++){
+        se (limite_usuarios > quantidade_usuarios){
 
-          nome = lista_nomes [contador_1]
+          escreva("\nDigite o nome do usu√°rio a ser cadastrado: ")
+          leia (nome)
+
+          escreva ("\nDigite a idade do usu√°rio: ")
+          leia (idade)
+
+          lista_nomes [quantidade_usuarios] = nome
+
+          quantidade_usuarios = quantidade_usuarios + 1
+
+          lista_idade [quantidade_idades] = idade 
+
+          quantidade_idades = quantidade_idades + 1
+
+          copia_limite_usuarios = copia_limite_usuarios - 1
+
+        } senao {
+
+          escreva ("\nLimite de usu√°rios atingidos, desculpe.\n")
+
         }
 
         pare
 
         caso 2:
 
-        escreva ("\nEssa È a lista de usu·rios j· cadastrados: ")
+        escreva ("\nEssa √© a lista de usu√°rios j√° cadastrados: ")
+
+        para (inteiro contador_2 = 0; contador_2 < quantidade_usuarios; contador_2 ++){
+          escreva ("\n", lista_nomes [contador_2])
+          escreva (", ", lista_idade [contador_2], ".")
+        }
+
+        escreva ("\n")
+
+        pare
+
+        caso 3: 
+
+        escreva ("\nFinalizando")
+
+        para (inteiro contador_3 = 0; contador_3 < 7; contador_3 ++){
+
+          escreva (".")
+          u.aguarde (500)
+        }
+
+        escreva ("\n")
+
+        loop_ativado = falso
+
+        pare
+
+        caso contrario:
+
+        escreva ("\nOp√ß√£o inv√°lida.")
+
+        pare
       }
     }
-    
-
-
-
-
-
-
-
-
-
   }
 }
